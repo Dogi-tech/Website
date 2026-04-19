@@ -10,22 +10,22 @@
   />
   <style>
     :root {
-      --bg: #f8f7f4;
-      --bg-2: #f2efe9;
-      --surface: rgba(255, 255, 255, 0.9);
-      --surface-solid: #ffffff;
-      --text: #151515;
-      --muted: #606060;
-      --line: #e7e1d8;
+      --bg: #f8f6f1;
+      --bg-soft: #f3efe7;
+      --card: rgba(255, 255, 255, 0.84);
+      --card-solid: #ffffff;
+      --text: #171717;
+      --muted: #626262;
+      --line: #e8e1d7;
       --orange: #ef6c2f;
       --orange-dark: #d85d24;
       --blue: #2f6fed;
-      --shadow: 0 14px 38px rgba(18, 18, 18, 0.06);
-      --radius-xl: 30px;
+      --shadow: 0 16px 40px rgba(20, 20, 20, 0.06);
+      --radius-xl: 32px;
       --radius-lg: 24px;
       --radius-md: 18px;
-      --radius-sm: 999px;
-      --max: 1180px;
+      --radius-pill: 999px;
+      --max: 1200px;
     }
 
     * {
@@ -41,9 +41,12 @@
       font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(239,108,47,0.06), transparent 28%),
-        linear-gradient(180deg, #fcfbf8 0%, var(--bg) 55%, var(--bg-2) 100%);
+        radial-gradient(circle at top left, rgba(239,108,47,0.07), transparent 26%),
+        radial-gradient(circle at top right, rgba(47,111,237,0.05), transparent 28%),
+        linear-gradient(180deg, #fcfbf8 0%, var(--bg) 55%, var(--bg-soft) 100%);
       line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     a {
@@ -60,9 +63,9 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      backdrop-filter: blur(16px);
-      background: rgba(248, 247, 244, 0.84);
-      border-bottom: 1px solid rgba(231, 225, 216, 0.8);
+      backdrop-filter: blur(14px);
+      background: rgba(248, 246, 241, 0.84);
+      border-bottom: 1px solid rgba(232, 225, 215, 0.82);
     }
 
     .nav {
@@ -78,7 +81,7 @@
       align-items: center;
       gap: 12px;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       letter-spacing: -0.03em;
       flex: 0 0 auto;
     }
@@ -88,10 +91,11 @@
       height: 36px;
       border-radius: 12px;
       background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.45), transparent 36%),
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.46), transparent 36%),
         linear-gradient(135deg, var(--orange), #ff8b4f);
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.28);
       position: relative;
+      flex: 0 0 auto;
     }
 
     .brand-mark::after {
@@ -131,8 +135,8 @@
       border-radius: 14px;
       font-size: 0.95rem;
       font-weight: 600;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
       white-space: nowrap;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
     }
 
     .button {
@@ -147,9 +151,9 @@
     }
 
     .button-secondary {
-      background: rgba(255,255,255,0.88);
-      color: var(--text);
+      background: rgba(255,255,255,0.9);
       border: 1px solid var(--line);
+      color: var(--text);
     }
 
     .button-secondary:hover {
@@ -162,11 +166,17 @@
     }
 
     section {
-      padding: 68px 0;
+      padding: 72px 0;
     }
 
     .hero {
-      padding: 74px 0 42px;
+      padding: 88px 0 52px;
+    }
+
+    .hero-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      text-align: center;
     }
 
     .pill {
@@ -175,13 +185,13 @@
       gap: 10px;
       min-height: 38px;
       padding: 0 14px;
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-pill);
       background: rgba(255,255,255,0.92);
       border: 1px solid var(--line);
-      box-shadow: 0 6px 18px rgba(18, 18, 18, 0.04);
-      color: #4a4a4a;
+      box-shadow: 0 6px 18px rgba(20,20,20,0.04);
+      color: #4d4d4d;
       font-size: 0.91rem;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
     }
 
     .pill-dot {
@@ -193,54 +203,71 @@
     }
 
     .hero-title {
-      margin: 0;
-      font-size: clamp(2.55rem, 4.8vw, 4.45rem);
-      line-height: 1.02;
-      letter-spacing: -0.06em;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 36px;
-      max-width: 1160px;
+      margin: 0 auto;
+      max-width: 980px;
+      font-size: clamp(3rem, 5.4vw, 5.15rem);
+      line-height: 0.95;
+      letter-spacing: -0.065em;
+      text-wrap: balance;
     }
 
-    .hero-title-left,
-    .hero-title-right {
-      display: block;
-      white-space: nowrap;
-    }
-
-    .hero-title-right {
-      text-align: right;
-      color: #202020;
+    .hero-kicker {
+      margin: 22px auto 0;
+      max-width: 760px;
+      font-size: clamp(1.18rem, 2vw, 1.55rem);
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      color: #2c2c2c;
+      text-wrap: balance;
     }
 
     .hero-subhead {
-      margin: 26px 0 0;
+      margin: 26px auto 0;
       max-width: 760px;
-      font-size: 1.12rem;
+      font-size: 1.08rem;
       color: var(--muted);
     }
 
     .hero-actions {
       display: flex;
+      justify-content: center;
       gap: 14px;
-      margin-top: 30px;
+      margin-top: 34px;
       flex-wrap: wrap;
     }
 
+    .hero-strip {
+      margin-top: 34px;
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .hero-chip {
+      min-height: 38px;
+      padding: 0 14px;
+      display: inline-flex;
+      align-items: center;
+      border-radius: var(--radius-pill);
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      color: #555;
+      font-size: 0.9rem;
+    }
+
     .hero-note {
-      margin-top: 16px;
-      color: #777;
+      margin-top: 20px;
       font-size: 0.93rem;
+      color: #777;
     }
 
     .section-card {
-      background: var(--surface);
+      background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow);
-      padding: 32px;
+      padding: 34px;
     }
 
     .eyebrow {
@@ -258,21 +285,21 @@
       font-size: clamp(1.55rem, 2.8vw, 2.2rem);
       line-height: 1.08;
       letter-spacing: -0.04em;
-      white-space: nowrap;
+      text-wrap: balance;
     }
 
     .lead {
       margin: 16px 0 0;
       color: var(--muted);
-      font-size: 1.02rem;
-      max-width: 860px;
+      font-size: 1.01rem;
+      max-width: 900px;
     }
 
     .grid-2,
     .grid-3 {
       display: grid;
       gap: 20px;
-      margin-top: 26px;
+      margin-top: 28px;
     }
 
     .grid-2 {
@@ -284,19 +311,20 @@
     }
 
     .stack-card {
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.92);
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
       padding: 24px;
-      box-shadow: 0 10px 28px rgba(18, 18, 18, 0.04);
+      box-shadow: 0 10px 28px rgba(20,20,20,0.04);
       min-height: 100%;
     }
 
     .quote-line {
       margin: 0;
-      font-size: 1.18rem;
+      font-size: 1.16rem;
       line-height: 1.28;
       letter-spacing: -0.03em;
+      text-wrap: balance;
     }
 
     .stack-card p {
@@ -383,7 +411,7 @@
     }
 
     .cta-section {
-      padding-top: 26px;
+      padding-top: 28px;
     }
 
     .cta-card {
@@ -400,7 +428,6 @@
 
     .cta-card h2 {
       color: #fff;
-      white-space: normal;
       max-width: 18ch;
       font-size: clamp(1.7rem, 3vw, 2.3rem);
     }
@@ -431,21 +458,6 @@
       border-top: 1px solid var(--line);
     }
 
-    @media (max-width: 1100px) {
-      .hero-title {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .hero-title-right {
-        text-align: left;
-      }
-
-      h2 {
-        white-space: normal;
-      }
-    }
-
     @media (max-width: 900px) {
       .grid-2,
       .grid-3 {
@@ -455,10 +467,6 @@
       .cta-card {
         flex-direction: column;
         align-items: flex-start;
-      }
-
-      h2 {
-        white-space: normal;
       }
     }
 
@@ -475,20 +483,16 @@
         display: none;
       }
 
-      .nav-actions {
-        gap: 8px;
-      }
-
       .nav-actions .button-secondary {
         display: none;
       }
 
       .hero {
-        padding: 46px 0 28px;
+        padding: 52px 0 32px;
       }
 
       section {
-        padding: 52px 0;
+        padding: 54px 0;
       }
 
       .section-card,
@@ -497,13 +501,8 @@
         padding: 22px;
       }
 
-      .hero-title-left,
-      .hero-title-right {
-        white-space: normal;
-      }
-
-      h2 {
-        white-space: normal;
+      .hero-strip {
+        gap: 10px;
       }
 
       .footer-row {
@@ -538,27 +537,35 @@
   <main>
     <section class="hero">
       <div class="container">
-        <div class="pill">
-          <span class="pill-dot" aria-hidden="true"></span>
-          <span>Simple to use. Powerful when needed.</span>
-        </div>
+        <div class="hero-wrap">
+          <div class="pill">
+            <span class="pill-dot" aria-hidden="true"></span>
+            <span>Simple to use. Powerful when needed.</span>
+          </div>
 
-        <h1 class="hero-title">
-          <span class="hero-title-left">One place to coordinate the work</span>
-          <span class="hero-title-right">Not where it’s created—where it comes together</span>
-        </h1>
+          <h1 class="hero-title">One place to coordinate the work</h1>
 
-        <p class="hero-subhead">
-          Orcha gives teams a clear place to coordinate work across tools, files, and organizations.
-        </p>
+          <p class="hero-kicker">Not where it’s created—where it comes together</p>
 
-        <div class="hero-actions">
-          <a class="button" href="https://orcha.app">Get Started</a>
-          <a class="button-secondary" href="#workflow-gap">See how it works</a>
-        </div>
+          <p class="hero-subhead">
+            Orcha gives teams a clear place to coordinate work across tools, files, and organizations.
+          </p>
 
-        <div class="hero-note">
-          Built for project work that spans systems, teams, and organizations
+          <div class="hero-actions">
+            <a class="button" href="https://orcha.app">Get Started</a>
+            <a class="button-secondary" href="#workflow-gap">See how it works</a>
+          </div>
+
+          <div class="hero-strip" aria-hidden="true">
+            <span class="hero-chip">Across tools</span>
+            <span class="hero-chip">Across organizations</span>
+            <span class="hero-chip">Clear ownership</span>
+            <span class="hero-chip">Central project view</span>
+          </div>
+
+          <div class="hero-note">
+            Built for project work that spans systems, teams, and organizations
+          </div>
         </div>
       </div>
     </section>
@@ -568,9 +575,7 @@
         <div class="section-card">
           <div class="eyebrow">The workflow gap</div>
           <h2>Work fails between tools</h2>
-          <p class="lead">
-            Work doesn’t fail inside tools—it fails between them.
-          </p>
+          <p class="lead">Work doesn’t fail inside tools—it fails between them</p>
           <p class="lead">
             Tasks, updates, requests, and deliverables end up across email, shared drives, messaging apps, and different teams. Each system holds part of the picture, but there is no single place that shows the actual state of the work.
           </p>
@@ -665,9 +670,9 @@
 
             <article class="stack-card">
               <div class="data-points">
-                <div class="data-point">Teams keep working where they want.</div>
-                <div class="data-point">The important deliverables are submitted into Orcha.</div>
-                <div class="data-point">The project can then be managed and understood in one place.</div>
+                <div class="data-point">Teams keep working where they want</div>
+                <div class="data-point">The important deliverables are submitted into Orcha</div>
+                <div class="data-point">The project can then be managed and understood in one place</div>
               </div>
             </article>
           </div>
