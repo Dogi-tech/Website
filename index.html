@@ -11,14 +11,18 @@
   <style>
     :root {
       --bg: #f8f7f4;
-      --surface: #ffffff;
-      --text: #161616;
-      --muted: #5f5f5f;
-      --line: #e7e2d9;
+      --bg-2: #f3f1ec;
+      --surface: rgba(255, 255, 255, 0.88);
+      --surface-solid: #ffffff;
+      --text: #171717;
+      --muted: #606060;
+      --line: #e8e2d9;
       --orange: #ef6c2f;
+      --orange-dark: #d85d24;
       --blue: #2f6fed;
-      --shadow: 0 12px 40px rgba(17, 17, 17, 0.06);
-      --radius-lg: 28px;
+      --shadow: 0 12px 36px rgba(16, 16, 16, 0.06);
+      --radius-xl: 30px;
+      --radius-lg: 24px;
       --radius-md: 18px;
       --radius-sm: 999px;
       --max: 1120px;
@@ -35,19 +39,16 @@
     body {
       margin: 0;
       font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: linear-gradient(180deg, #fcfbf8 0%, #f5f3ee 100%);
       color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(239,108,47,0.06), transparent 30%),
+        linear-gradient(180deg, #fcfbf8 0%, var(--bg) 52%, var(--bg-2) 100%);
       line-height: 1.5;
     }
 
     a {
       color: inherit;
       text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
     }
 
     .container {
@@ -58,10 +59,10 @@
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 40;
+      z-index: 50;
       backdrop-filter: blur(16px);
       background: rgba(248, 247, 244, 0.82);
-      border-bottom: 1px solid rgba(231, 226, 217, 0.7);
+      border-bottom: 1px solid rgba(232, 226, 217, 0.8);
     }
 
     .nav {
@@ -77,8 +78,8 @@
       align-items: center;
       gap: 12px;
       font-weight: 700;
+      font-size: 1.12rem;
       letter-spacing: -0.03em;
-      font-size: 1.15rem;
     }
 
     .brand-mark {
@@ -86,10 +87,11 @@
       height: 36px;
       border-radius: 12px;
       background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.45), transparent 38%),
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.45), transparent 36%),
         linear-gradient(135deg, var(--orange), #ff8b4f);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.28);
       position: relative;
+      flex: 0 0 auto;
     }
 
     .brand-mark::after {
@@ -97,7 +99,7 @@
       position: absolute;
       inset: 9px;
       border-radius: 50%;
-      border: 2px solid rgba(255,255,255,0.72);
+      border: 2px solid rgba(255,255,255,0.74);
     }
 
     .nav-links {
@@ -105,7 +107,7 @@
       align-items: center;
       gap: 24px;
       color: var(--muted);
-      font-size: 0.96rem;
+      font-size: 0.95rem;
     }
 
     .nav-links a:hover {
@@ -162,29 +164,26 @@
     }
 
     .hero {
-      padding: 72px 0 72px;
+      padding: 84px 0 64px;
     }
 
-    .hero-shell {
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-      gap: 42px;
-      align-items: center;
+    .hero-inner {
+      max-width: 760px;
     }
 
     .pill {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      min-height: 38px;
-      padding: 0 14px;
+      min-height: 40px;
+      padding: 0 15px;
       border-radius: var(--radius-sm);
-      background: rgba(255,255,255,0.86);
+      background: rgba(255,255,255,0.9);
       border: 1px solid var(--line);
-      color: #4c4c4c;
+      box-shadow: 0 6px 18px rgba(16, 16, 16, 0.04);
+      color: #4b4b4b;
       font-size: 0.92rem;
-      box-shadow: 0 6px 18px rgba(17, 17, 17, 0.04);
-      margin-bottom: 22px;
+      margin-bottom: 24px;
     }
 
     .pill-dot {
@@ -192,19 +191,20 @@
       height: 8px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--orange), var(--blue));
+      flex: 0 0 auto;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(2.75rem, 6vw, 5.1rem);
+      font-size: clamp(3rem, 6vw, 5.3rem);
       line-height: 0.96;
-      letter-spacing: -0.055em;
+      letter-spacing: -0.06em;
       max-width: 12ch;
     }
 
     .hero-subhead {
-      margin: 22px 0 0;
-      max-width: 640px;
+      margin: 24px 0 0;
+      max-width: 620px;
       font-size: 1.15rem;
       color: var(--muted);
     }
@@ -218,151 +218,16 @@
 
     .hero-note {
       margin-top: 18px;
-      color: #727272;
-      font-size: 0.95rem;
+      color: #777;
+      font-size: 0.94rem;
     }
 
-    .hero-card {
-      position: relative;
-      background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.88) 100%);
-      border: 1px solid rgba(231, 226, 217, 0.95);
-      border-radius: var(--radius-lg);
-      padding: 24px;
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
       box-shadow: var(--shadow);
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: auto auto -80px -40px;
-      width: 180px;
-      height: 180px;
-      background: radial-gradient(circle, rgba(47,111,237,0.12), transparent 68%);
-      pointer-events: none;
-    }
-
-    .window {
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid #ede7de;
-      background: #fff;
-    }
-
-    .window-bar {
-      height: 46px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 16px;
-      background: #fbfaf7;
-      border-bottom: 1px solid #efe9df;
-    }
-
-    .window-dots {
-      display: flex;
-      gap: 8px;
-    }
-
-    .window-dots span {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #e1dcd4;
-    }
-
-    .window-label {
-      font-size: 0.86rem;
-      color: #727272;
-    }
-
-    .window-body {
-      padding: 18px;
-      display: grid;
-      gap: 14px;
-      background:
-        linear-gradient(180deg, rgba(248,247,244,0.65), rgba(255,255,255,1));
-    }
-
-    .mini-row {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 12px;
-    }
-
-    .panel {
-      border: 1px solid #eee8df;
-      border-radius: 18px;
-      background: #fff;
-      padding: 16px;
-    }
-
-    .panel h3,
-    .stack-card h3 {
-      margin: 0 0 8px;
-      font-size: 0.96rem;
-      letter-spacing: -0.02em;
-    }
-
-    .panel p,
-    .stack-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .status-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .status-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 12px;
-      border-radius: 14px;
-      background: #faf8f4;
-      border: 1px solid #f0ebe4;
-    }
-
-    .status-item strong {
-      display: block;
-      font-size: 0.92rem;
-      margin-bottom: 2px;
-    }
-
-    .status-item span {
-      color: var(--muted);
-      font-size: 0.84rem;
-    }
-
-    .badge {
-      min-width: 74px;
-      text-align: center;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      background: rgba(47,111,237,0.1);
-      color: var(--blue);
-    }
-
-    .badge.orange {
-      background: rgba(239,108,47,0.12);
-      color: var(--orange);
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .section-intro {
-      max-width: 760px;
-      margin-bottom: 32px;
+      padding: 34px;
     }
 
     .eyebrow {
@@ -377,7 +242,7 @@
 
     h2 {
       margin: 0;
-      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-size: clamp(2rem, 4vw, 3.15rem);
       line-height: 1.04;
       letter-spacing: -0.045em;
     }
@@ -386,48 +251,68 @@
       margin: 18px 0 0;
       color: var(--muted);
       font-size: 1.08rem;
-      max-width: 720px;
+      max-width: 760px;
+    }
+
+    .workflow-grid,
+    .solution-grid,
+    .data-grid,
+    .future-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .workflow-grid,
+    .solution-grid,
+    .data-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 28px;
+    }
+
+    .future-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 28px;
     }
 
     .stack-card {
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.86);
       border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: var(--shadow);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      box-shadow: 0 10px 28px rgba(16, 16, 16, 0.04);
       min-height: 100%;
     }
 
     .quote-line {
-      margin: 0 0 18px;
-      font-size: 1.3rem;
-      line-height: 1.25;
+      margin: 0;
+      font-size: 1.28rem;
+      line-height: 1.28;
       letter-spacing: -0.03em;
+    }
+
+    .stack-card p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 0.98rem;
     }
 
     .muted-list {
       display: grid;
       gap: 14px;
-      margin-top: 18px;
+      margin-top: 8px;
     }
 
     .muted-list div {
       padding-top: 14px;
       border-top: 1px solid #eee8df;
       color: var(--muted);
-    }
-
-    .solution-grid {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 24px;
-      align-items: stretch;
+      font-size: 0.96rem;
     }
 
     .feature-list {
       display: grid;
-      gap: 14px;
-      margin-top: 18px;
+      gap: 16px;
+      margin-top: 4px;
     }
 
     .feature-item {
@@ -441,7 +326,7 @@
       height: 28px;
       border-radius: 10px;
       background: linear-gradient(135deg, rgba(239,108,47,0.16), rgba(47,111,237,0.12));
-      border: 1px solid rgba(239,108,47,0.12);
+      border: 1px solid rgba(239,108,47,0.14);
       flex: 0 0 auto;
       margin-top: 2px;
     }
@@ -457,121 +342,42 @@
       font-size: 0.92rem;
     }
 
-    .data-shell {
-      display: grid;
-      grid-template-columns: minmax(0, 1.04fr) minmax(320px, 0.96fr);
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    .data-visual {
-      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.9));
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      padding: 22px;
-      box-shadow: var(--shadow);
-    }
-
-    .data-board {
+    .data-points {
       display: grid;
       gap: 14px;
+      margin-top: 4px;
     }
 
-    .data-strip {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      min-height: 34px;
-      padding: 0 12px;
-      border-radius: 999px;
-      background: #faf8f4;
-      border: 1px solid #eee8df;
-      font-size: 0.84rem;
-      color: #5a5a5a;
-    }
-
-    .doc-card {
-      border: 1px solid #eee8df;
+    .data-point {
+      padding: 16px 18px;
       border-radius: 18px;
+      border: 1px solid #eee8df;
       background: #fff;
-      padding: 16px;
-      display: grid;
-      gap: 10px;
-    }
-
-    .doc-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .doc-title {
-      font-weight: 600;
+      color: var(--muted);
       font-size: 0.96rem;
     }
 
-    .doc-meta {
-      color: var(--muted);
-      font-size: 0.84rem;
-    }
-
-    .progress {
-      height: 10px;
-      border-radius: 999px;
-      background: #f1ede6;
-      overflow: hidden;
-    }
-
-    .progress > span {
-      display: block;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, var(--orange), var(--blue));
-    }
-
-    .future-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 26px;
-    }
-
-    .future-card {
-      background: rgba(255,255,255,0.92);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 22px;
-      box-shadow: var(--shadow);
-    }
-
     .future-card h3 {
-      margin: 0 0 10px;
+      margin: 0;
       font-size: 1.02rem;
       letter-spacing: -0.02em;
     }
 
     .future-card p {
-      margin: 0;
+      margin: 10px 0 0;
       color: var(--muted);
       font-size: 0.92rem;
     }
 
     .cta-section {
-      padding-top: 34px;
+      padding-top: 36px;
     }
 
     .cta-card {
-      background: linear-gradient(135deg, rgba(239,108,47,0.96), rgba(217,92,35,0.98));
+      background: linear-gradient(135deg, rgba(239,108,47,0.97), rgba(216,93,36,0.98));
       color: #fff;
-      border-radius: 30px;
-      padding: 36px;
+      border-radius: 32px;
+      padding: 38px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -585,13 +391,13 @@
 
     .cta-card .lead {
       color: rgba(255,255,255,0.84);
-      margin-top: 12px;
       max-width: 48ch;
+      margin-top: 12px;
     }
 
     .cta-card .button-secondary {
       background: #fff;
-      border-color: rgba(255,255,255,0.2);
+      border-color: rgba(255,255,255,0.24);
     }
 
     footer {
@@ -609,20 +415,12 @@
       border-top: 1px solid var(--line);
     }
 
-    @media (max-width: 1024px) {
-      .hero-shell,
+    @media (max-width: 980px) {
+      .workflow-grid,
       .solution-grid,
-      .data-shell,
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
-
+      .data-grid,
       .future-grid {
         grid-template-columns: 1fr;
-      }
-
-      h1 {
-        max-width: none;
       }
 
       .cta-card {
@@ -632,6 +430,10 @@
     }
 
     @media (max-width: 760px) {
+      .container {
+        width: min(var(--max), calc(100% - 24px));
+      }
+
       .nav {
         min-height: 68px;
       }
@@ -640,21 +442,26 @@
         display: none;
       }
 
+      .nav-actions {
+        gap: 8px;
+      }
+
+      .nav-actions .button-secondary {
+        display: none;
+      }
+
       section {
         padding: 68px 0;
       }
 
       .hero {
-        padding-top: 42px;
+        padding: 48px 0 46px;
       }
 
-      .hero-actions,
-      .nav-actions {
-        flex-wrap: wrap;
-      }
-
-      .mini-row {
-        grid-template-columns: 1fr;
+      .section-card,
+      .stack-card,
+      .cta-card {
+        padding: 24px;
       }
 
       .footer-row {
@@ -662,12 +469,8 @@
         align-items: flex-start;
       }
 
-      .container {
-        width: min(var(--max), calc(100% - 24px));
-      }
-
-      .cta-card {
-        padding: 28px;
+      h1 {
+        max-width: none;
       }
     }
   </style>
@@ -696,8 +499,8 @@
 
   <main>
     <section class="hero">
-      <div class="container hero-shell">
-        <div>
+      <div class="container">
+        <div class="hero-inner">
           <div class="pill">
             <span class="pill-dot" aria-hidden="true"></span>
             <span>Simple to use. Powerful when needed.</span>
@@ -721,225 +524,147 @@
             Built for project work that spans systems, teams, and organizations.
           </div>
         </div>
-
-        <div class="hero-card" aria-hidden="true">
-          <div class="window">
-            <div class="window-bar">
-              <div class="window-dots">
-                <span></span><span></span><span></span>
-              </div>
-              <div class="window-label">Project view</div>
-            </div>
-            <div class="window-body">
-              <div class="mini-row">
-                <div class="panel">
-                  <h3>Coordination</h3>
-                  <p>Tasks, owners, updates, and deliverables aligned in one place.</p>
-                  <div class="status-list">
-                    <div class="status-item">
-                      <div>
-                        <strong>Financial model</strong>
-                        <span>Waiting on upload</span>
-                      </div>
-                      <div class="badge orange">Pending</div>
-                    </div>
-                    <div class="status-item">
-                      <div>
-                        <strong>Customer memo</strong>
-                        <span>Submitted by client team</span>
-                      </div>
-                      <div class="badge">Received</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="panel">
-                  <h3>Visibility</h3>
-                  <p>Current status and key outputs without chasing email threads.</p>
-                  <div class="status-list">
-                    <div class="status-item">
-                      <div>
-                        <strong>Legal review</strong>
-                        <span>Owner assigned</span>
-                      </div>
-                      <div class="badge">On track</div>
-                    </div>
-                    <div class="status-item">
-                      <div>
-                        <strong>Open items</strong>
-                        <span>4 need follow-up</span>
-                      </div>
-                      <div class="badge orange">Attention</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="panel">
-                <h3>Work comes together here</h3>
-                <p>Not where everything is created. Where the work can be run.</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
     <section id="workflow-gap">
       <div class="container">
-        <div class="section-intro">
+        <div class="section-card">
           <div class="eyebrow">The workflow gap</div>
           <h2>Work doesn’t fail inside tools. It fails between them.</h2>
           <p class="lead">
             Tasks, updates, requests, and deliverables end up across email, shared drives, messaging apps, and different teams. Each system holds part of the picture, but there is no single place that shows the actual state of the work.
           </p>
-        </div>
 
-        <div class="grid-2">
-          <article class="stack-card">
-            <p class="quote-line">Each tool may do its job. The project still becomes hard to see.</p>
-            <p>
-              The issue is not a lack of software. The issue is that coordination, status, and outputs are fragmented across systems.
-            </p>
-          </article>
+          <div class="workflow-grid">
+            <article class="stack-card">
+              <p class="quote-line">Each tool may do its job. The project still becomes hard to see.</p>
+              <p>
+                The issue is not a lack of software. The issue is that coordination, status, and outputs are fragmented across systems.
+              </p>
+            </article>
 
-          <article class="stack-card">
-            <h3>What gets lost</h3>
-            <div class="muted-list">
-              <div>Who owns the next step</div>
-              <div>What has actually been submitted</div>
-              <div>What is still outstanding</div>
-              <div>What changed and what needs review</div>
-            </div>
-          </article>
+            <article class="stack-card">
+              <h3>What gets lost</h3>
+              <div class="muted-list">
+                <div>Who owns the next step</div>
+                <div>What has actually been submitted</div>
+                <div>What is still outstanding</div>
+                <div>What changed and what needs review</div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="coordination-layer">
-      <div class="container solution-grid">
-        <article class="stack-card">
+      <div class="container">
+        <div class="section-card">
           <div class="eyebrow">A coordination layer, not another system</div>
           <h2>One place to coordinate the work and see status clearly.</h2>
           <p class="lead">
             Orcha sits above the tools teams already use. It provides one place to coordinate the work, track ownership, and see status clearly.
           </p>
-        </article>
 
-        <article class="stack-card">
-          <div class="feature-list">
-            <div class="feature-item">
-              <span class="feature-icon" aria-hidden="true"></span>
-              <div>
-                <strong>Use your existing tools</strong>
-                <span>Teams keep working where they already work.</span>
-              </div>
-            </div>
+          <div class="solution-grid">
+            <article class="stack-card">
+              <div class="feature-list">
+                <div class="feature-item">
+                  <span class="feature-icon" aria-hidden="true"></span>
+                  <div>
+                    <strong>Use your existing tools</strong>
+                    <span>Teams keep working where they already work.</span>
+                  </div>
+                </div>
 
-            <div class="feature-item">
-              <span class="feature-icon" aria-hidden="true"></span>
-              <div>
-                <strong>Works across organizations</strong>
-                <span>Useful inside one team or across multiple external groups.</span>
-              </div>
-            </div>
+                <div class="feature-item">
+                  <span class="feature-icon" aria-hidden="true"></span>
+                  <div>
+                    <strong>Works across organizations</strong>
+                    <span>Useful inside one team or across multiple external groups.</span>
+                  </div>
+                </div>
 
-            <div class="feature-item">
-              <span class="feature-icon" aria-hidden="true"></span>
-              <div>
-                <strong>Simple on the surface</strong>
-                <span>Clear enough to adopt quickly, structured enough to run real projects.</span>
+                <div class="feature-item">
+                  <span class="feature-icon" aria-hidden="true"></span>
+                  <div>
+                    <strong>Simple on the surface</strong>
+                    <span>Clear enough to adopt quickly, structured enough to run real projects.</span>
+                  </div>
+                </div>
               </div>
-            </div>
+            </article>
+
+            <article class="stack-card">
+              <p class="quote-line">Orcha does not replace every tool. It gives the work a place to come together.</p>
+              <p>
+                That means clearer ownership, clearer status, and a better view of what is actually happening without forcing everyone into a new operating model.
+              </p>
+            </article>
           </div>
-        </article>
+        </div>
       </div>
     </section>
 
     <section id="bring-work-together">
-      <div class="container data-shell">
-        <article class="stack-card">
+      <div class="container">
+        <div class="section-card">
           <div class="eyebrow">Bring the work together</div>
-          <h2>The deliverables that matter are submitted into Orcha.</h2>
+          <h2>The deliverables and outputs that matter are submitted into Orcha.</h2>
           <p class="lead">
             This creates a central view of the project—what’s been done, what’s outstanding, and what needs attention.
           </p>
-          <p class="lead" style="font-size:1rem; margin-top:14px;">
+
+          <div class="data-grid">
+            <article class="stack-card">
+              <p class="quote-line">Not a general storage platform. Not just a task list.</p>
+              <p>
+                Orcha gives the project a central working record by bringing together the key files, outputs, status, and ownership that matter.
+              </p>
+            </article>
+
+            <article class="stack-card">
+              <div class="data-points">
+                <div class="data-point">Teams keep working where they want.</div>
+                <div class="data-point">The important deliverables are submitted into Orcha.</div>
+                <div class="data-point">The project can then be managed and understood in one place.</div>
+              </div>
+            </article>
+          </div>
+
+          <p class="lead" style="margin-top:24px;">
             Orcha is not trying to replace storage or existing tools. Teams keep working where they want. Orcha brings the work together so it can be managed and understood.
           </p>
-        </article>
-
-        <aside class="data-visual" aria-hidden="true">
-          <div class="data-board">
-            <div class="data-strip">
-              <span class="chip">Submitted outputs</span>
-              <span class="chip">Current status</span>
-              <span class="chip">Ownership</span>
-              <span class="chip">What needs review</span>
-            </div>
-
-            <div class="doc-card">
-              <div class="doc-top">
-                <div>
-                  <div class="doc-title">Operating model draft</div>
-                  <div class="doc-meta">Uploaded to project • Ready for review</div>
-                </div>
-                <div class="badge">Received</div>
-              </div>
-              <div class="progress"><span style="width: 84%;"></span></div>
-            </div>
-
-            <div class="doc-card">
-              <div class="doc-top">
-                <div>
-                  <div class="doc-title">Q2 forecast package</div>
-                  <div class="doc-meta">Pending final input • Owner assigned</div>
-                </div>
-                <div class="badge orange">Pending</div>
-              </div>
-              <div class="progress"><span style="width: 48%;"></span></div>
-            </div>
-
-            <div class="doc-card">
-              <div class="doc-top">
-                <div>
-                  <div class="doc-title">Commercial diligence memo</div>
-                  <div class="doc-meta">Submitted • Follow-up questions flagged</div>
-                </div>
-                <div class="badge">In review</div>
-              </div>
-              <div class="progress"><span style="width: 68%;"></span></div>
-            </div>
-          </div>
-        </aside>
+        </div>
       </div>
     </section>
 
     <section id="future-layer">
       <div class="container">
-        <div class="section-intro">
+        <div class="section-card">
           <div class="eyebrow">Built for how work is actually reviewed</div>
           <h2>Centralized outputs create a foundation for analysis.</h2>
           <p class="lead">
             Because the key outputs are in one place, Orcha can layer in analysis over time—reviewing deliverables, surfacing gaps, and helping teams stay aligned without manual follow-up.
           </p>
-        </div>
 
-        <div class="future-grid">
-          <article class="future-card">
-            <h3>Review deliverables</h3>
-            <p>Use centralized project outputs to support faster review and better judgment.</p>
-          </article>
+          <div class="future-grid">
+            <article class="stack-card future-card">
+              <h3>Review deliverables</h3>
+              <p>Use centralized project outputs to support faster review and better judgment.</p>
+            </article>
 
-          <article class="future-card">
-            <h3>Surface gaps</h3>
-            <p>Highlight what is missing, incomplete, or still needs attention.</p>
-          </article>
+            <article class="stack-card future-card">
+              <h3>Surface gaps</h3>
+              <p>Highlight what is missing, incomplete, or still needs attention.</p>
+            </article>
 
-          <article class="future-card">
-            <h3>Support decisions</h3>
-            <p>Turn scattered submissions into a clearer operating picture for the team.</p>
-          </article>
+            <article class="stack-card future-card">
+              <h3>Support decisions</h3>
+              <p>Turn scattered submissions into a clearer operating picture for the team.</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
